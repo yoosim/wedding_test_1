@@ -84,7 +84,7 @@
 }
 
 .heroTitle{
-  font-family: var(--font-title); };
+  font-family: var(--font-title);
   font-size: calc(34px * var(--r));
   letter-spacing: calc(4px * var(--r));
   line-height: 1.05;
