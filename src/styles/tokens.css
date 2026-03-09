@@ -1,0 +1,36 @@
+:root{
+  /* ====== scale system (기준: 390px) ====== */
+  --design-w: 390;
+  /* 화면폭이 390보다 크면 390으로 고정, 작으면 화면폭(100vw)을 사용 */
+  --cw: min(100vw, calc(var(--design-w) * 1px));
+  /* 비율: PC에서는 1, 작은 폰에서는 0.x 로 축소 */
+  --r: calc(var(--cw) / calc(var(--design-w) * 1px));
+
+  /* ====== colors / tokens ====== */
+  --bg: #09090b;
+  --panel: rgba(255,255,255,.06);
+  --stroke: rgba(255,255,255,.14);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+  --muted2: rgba(255,255,255,.52);
+
+  --radius: 18px;
+  --shadow: 0 18px 40px rgba(0,0,0,.55);
+
+  /* (선택) 폰트 토큰 */
+  /* --font-title: "Playfair Display", "Noto Serif KR", serif; */
+  /* --font-body: "Noto Serif KR", serif; */
+  /* --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; */
+}
+
+  /* 인트로 폰트 설정 */
+  /* 🎬 포스터/타이틀용 (영문 강한 느낌) */
+  --font-title: "Playfair Display", "Noto Serif KR", serif;
+
+  /* 📖 본문용 (가독성 중심) */
+  --font-body: "Noto Serif KR", serif;
+
+  /* 🖥 타자/모노 느낌 */
+  --font-mono: "Fjalla One", monospace;
+
+}

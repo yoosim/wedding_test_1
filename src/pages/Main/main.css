@@ -1,0 +1,156 @@
+/* ===============================
+   MAIN (기준: 390px / 모바일 비율 축소)
+   - var(--r): 화면폭이 390보다 작으면 0.x로 줄어듦, 390 이상이면 1
+   - 그래서 PC에서는 항상 "390 기준 디자인" 그대로 유지됨
+================================= */
+
+.mainShell{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ✅ PC에서도 390px로 고정, 모바일에서는 화면폭에 맞춰 축소 */
+.mainContainer{
+  width: var(--cw);          /* min(100vw, 390px) */
+  margin: 0 auto;
+
+  padding: calc(24px * var(--r));
+  display: flex;
+  flex-direction: column;
+  gap: calc(64px * var(--r));
+}
+
+/* ===============================
+   SECTION BASE
+================================= */
+
+.section{
+  display: flex;
+  flex-direction: column;
+  gap: calc(22px * var(--r));
+}
+
+.sectionTitle{
+  text-align: center;
+  font-size: calc(20px * var(--r));
+  letter-spacing: calc(2px * var(--r));
+  font-weight: 600;
+}
+
+/* ===============================
+   HERO SECTION
+================================= */
+
+.heroSection{
+  text-align: center;
+  align-items: center;
+}
+
+.heroImage,
+.heroImageDummy{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: calc(20px * var(--r));
+  overflow: hidden;
+}
+
+.heroImage{
+  background-size: cover;
+  background-position: center;
+}
+
+.heroImageDummy{
+  background: linear-gradient(145deg, #1f1f1f, #0e0e0e);
+}
+
+.heroText{
+  display: flex;
+  flex-direction: column;
+  gap: calc(10px * var(--r));
+}
+
+.heroTagline{
+  font-size: calc(13px * var(--r));
+  opacity: 0.6;
+  letter-spacing: calc(2px * var(--r));
+}
+
+.heroTop{
+  font-size: calc(15px * var(--r));
+  opacity: 0.85;
+}
+
+.heroTitle{
+  font-family: var(--font-title); };
+  font-size: calc(34px * var(--r));
+  letter-spacing: calc(4px * var(--r));
+  line-height: 1.05;
+}
+
+.heroMeta{
+  font-size: calc(14px * var(--r));
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* ===============================
+   INVITE SECTION
+================================= */
+
+.inviteTextBox{
+  text-align: center;
+  font-size: calc(15px * var(--r));
+  line-height: 1.9;
+}
+
+/* ===============================
+   FAMILY SECTION
+================================= */
+
+.familyGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(16px * var(--r));
+  font-size: calc(14px * var(--r));
+  line-height: 1.6;
+}
+
+/* ===============================
+   EVENT INFO
+================================= */
+
+.infoBox{
+  font-size: calc(14px * var(--r));
+  line-height: 1.7;
+}
+
+/* ===============================
+   GALLERY
+================================= */
+
+.galleryGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(10px * var(--r));
+}
+
+.galleryDummy{
+  aspect-ratio: 1 / 1;
+  background: #1a1a1a;
+  border-radius: calc(12px * var(--r));
+}
+
+/* ===============================
+   GUESTBOOK
+================================= */
+
+.guestbookBox{
+  padding: calc(18px * var(--r));
+  background: rgba(255,255,255, 0.05);
+  border-radius: calc(16px * var(--r));
+  font-size: calc(14px * var(--r));
+  line-height: 1.7;
+}

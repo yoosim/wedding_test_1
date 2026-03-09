@@ -1,0 +1,375 @@
+/* =========================================================
+   NOIR THEME - Mobile Wedding Intro / Main Base Style
+   목적:
+   - 웹에서도 "모바일 전용 화면"처럼 중앙 고정
+   - 다양한 폰 사이즈에서도 비율 깨지지 않게
+   - 배경 이미지가 좌우로 퍼지지 않게 프레임 안에서만 표시
+========================================================= */
+
+/* =========================
+   공통 레이아웃 (Main 미포함)
+========================= */
+
+.appShell{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
+  background: var(--bg);
+}
+
+.card{
+  width: min(420px, 94vw);
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  box-shadow: var(--shadow);
+}
+
+.title{
+  margin: 0 0 8px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.muted{
+  color: var(--muted);
+  margin: 0;
+}
+
+
+/* =========================
+   INTRO ROOT (바깥 영역)
+========================= */
+
+.introRoot{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+
+/* =========================
+   모바일 화면 프레임
+   - 웹에서도 항상 중앙 고정
+   - 최대 420px
+   - 비율 유지
+========================= */
+
+.mobileFrame{
+  width: min(420px, 94vw);
+  aspect-ratio: 9 / 19.5;         /* 모바일 비율 */
+  max-height: 92vh;
+
+  border-radius: 28px;
+  overflow: hidden;
+
+  position: relative;
+
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 30px 90px rgba(0,0,0,.65);
+}
+
+/* 모바일 베젤 느낌 (선택) */
+.mobileFrame::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.06);
+  pointer-events:none;
+  z-index:1;
+}
+
+
+/* =========================
+   인트로 배경 이미지
+   - 프레임 안에서만 보임
+========================= */
+
+.introPoster{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.70)),
+    url("/assets/images/main_intro_background.jpg");
+
+  background-size: cover;
+  background-position: center;
+  /* 배경 이미지 필터 */
+  filter: contrast(1.08) saturate(.65) grayscale(.35);
+  transform: scale(1.02);
+
+  z-index: 0;
+}
+
+
+/* =========================
+   콘텐츠 카드 (중앙 고정)
+========================= */
+
+.introContent{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+
+  width: min(380px, 88%);
+  padding: 18px 16px;
+
+  border-radius: var(--radius);
+  background: rgba(0,0,0,.48);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+
+  z-index:5;
+}
+
+
+/* =========================
+   타이틀 영역
+========================= */
+
+.badge{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  color: var(--muted);
+  font-size:12px;
+  letter-spacing:1.2px;
+}
+
+.introTitle{
+  margin:14px 0;
+  line-height:1.2;
+  text-transform:uppercase;
+}
+
+/* 제목 상단 박스 */
+.introTitleTop{
+  display:block;
+  font-size:12px;
+  color:var(--muted2);
+  letter-spacing:2px;
+}
+
+/* 제목 영역 */
+.introTitleMain{
+  display:block;
+  font-size: clamp(38px, 5.2vw, 20px);
+  
+  letter-spacing:2px;
+  margin-top:8px;
+}
+
+/* 시간 영역 */
+.introTitleBottom{
+  display:block;
+  font-size:12px;
+  color:var(--muted2);
+  letter-spacing:2px;
+  margin-top:8px;
+  margin-bottom: 30px;
+}
+
+
+
+/* =========================
+   타이핑 영역
+========================= */
+
+.typeBox{
+  padding:12px;
+  border-radius:14px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.typeLine{
+  display:flex;
+  gap:8px;
+  align-items:baseline;
+
+  /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; */
+  font-size:13px;
+  color: rgba(255,255,255,.82);
+  padding:4px 0;
+}
+
+.typePrompt{
+  color: rgba(255,255,255,.55);
+}
+
+.cursor{
+  width:8px;
+  height:14px;
+  margin-left:2px;
+  background: rgba(255,255,255,.55);
+  display:inline-block;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink{
+  50%{ opacity:0; }
+}
+
+
+/* =========================
+   ENTER 버튼
+========================= */
+
+.enterBtn{
+  margin-top:14px;
+  width:100%;
+  padding:12px 14px;
+
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+
+  color: rgba(255,255,255,.55);
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  cursor:not-allowed;
+}
+
+.enterBtn.isReady{
+  cursor:pointer;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.10);
+}
+
+.enterHint{
+  margin-left:10px;
+  letter-spacing:1px;
+  color: rgba(255,255,255,.55);
+}
+
+.credits{
+  margin-top:10px;
+  text-align:center;
+  font-size:12px;
+}
+
+
+/* =========================
+   Film Look Effects
+========================= */
+
+.mobileFrame .vignette,
+.mobileFrame .grain,
+.mobileFrame .scanlines,
+.mobileFrame .filmCut{
+  position:absolute;
+  inset:0;
+}
+
+.vignette{
+  background: radial-gradient(closest-side, transparent 55%, rgba(0,0,0,.75) 100%);
+  z-index:2;
+}
+
+.grain{
+  z-index:6;
+  opacity:.16;
+  pointer-events:none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+
+  mix-blend-mode: overlay;
+  animation: grainMove 6s steps(10) infinite;
+}
+
+@keyframes grainMove{
+  0%{ transform:translate(0,0); }
+  20%{ transform:translate(-3%,2%); }
+  40%{ transform:translate(2%,-2%); }
+  60%{ transform:translate(-2%,-3%); }
+  80%{ transform:translate(3%,1%); }
+  100%{ transform:translate(0,0); }
+}
+
+.scanlines{
+  z-index:7;
+  opacity:.08;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.10) 0px,
+    rgba(255,255,255,.10) 1px,
+    transparent 2px,
+    transparent 6px
+  );
+  mix-blend-mode: overlay;
+}
+
+
+/* =========================
+   필름 컷 전환 애니메이션
+========================= */
+
+.filmCut{
+  opacity:0;
+  z-index:999;
+  pointer-events:none;
+
+  background:
+    radial-gradient(900px 420px at 50% 40%, rgba(255,255,255,.95), rgba(255,255,255,.05) 60%, transparent 70%),
+    linear-gradient(0deg, rgba(0,0,0,.98), rgba(0,0,0,.98));
+
+  mix-blend-mode: screen;
+}
+
+.introRoot.isCutting .filmCut{
+  animation: filmCutAnim 650ms steps(1) forwards;
+}
+
+.introRoot.isCutting .introContent{
+  animation: cutJitter 650ms steps(1) forwards;
+}
+
+@keyframes filmCutAnim{
+  0%   { opacity:0; }
+  10%  { opacity:1; }
+  18%  { opacity:0; }
+  30%  { opacity:1; }
+  36%  { opacity:0; }
+  55%  { opacity:1; }
+  100% { opacity:1; }
+}
+
+@keyframes cutJitter{
+  0%   { transform:translate(-50%, -50%); }
+  10%  { transform:translate(calc(-50% - 2px), calc(-50% + 1px)); }
+  18%  { transform:translate(calc(-50% + 1px), calc(-50% - 1px)); }
+  30%  { transform:translate(calc(-50% - 1px), calc(-50% - 2px)); }
+  36%  { transform:translate(-50%, -50%); }
+  55%  { transform:translate(-50%, -50%); }
+  100% { transform:translate(-50%, -50%); }
+}
+
+
+/* 인트로 배경 오버레이는 클릭 막지 않게 */
+/* 배경/오버레이는 클릭 막지 않게 */
+.introPoster,
+.vignette,
+.grain,
+.scanlines,
+.filmCut{
+  pointer-events: none;
+}
+
+.introContent{
+  position: relative;
+  z-index: 10;
+}
